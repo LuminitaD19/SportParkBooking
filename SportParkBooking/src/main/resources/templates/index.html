@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
+        <title>SportParkBooking - Home</title>
+    </head>
+    <body>
+        <ul>
+            <li><a  href="/templates/home.html"     th:href="@{/home}"> Home</a></li>
+            <li><a  href="/templates/login.html"    th:href="@{/login}"> Login</a></li>
+            <li><a  href="/templates/register.html" th:href="@{/register}"> Register</a></li>
+            <li><a  href="/templates/aboutUs.html"  th:href="@{/aboutUs}"> About us</a></li>
+            <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
+            <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
+            <li><a  href="/templates/myBookings.html"  th:href="@{/myBookings}"> My Bookings</a></li>
+        </ul>
+        <p><br/></p>
+        <div>
+            <h1>Sports Park Booking</h1>
+            <p class="index">
+                <b>Choose a sport to see available playground hours and prices.</b>
+            </p>
+        </div>
+        <div class="row" >
+            <div class="column" th:each="sport: ${mySportList}" >
+                <div class="card">
+                    <a th:href ="'selectPlayGround?sportName='+${sport.SportName}+'&userID='+${user.userID}"><img class="index" th:src="'/images/'+${sport.sportName}+'.jpg'" th:alt="${sport.sportName}" ></a>
+                    <div class="container">
+                        <h2><a th:href="'selectPlayGround?sportName='+${sport.SportName}+'&userID='+${user.userID}">[[${sport.sportName}]]</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
